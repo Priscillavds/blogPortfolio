@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import posts from '../data/posts';
-import img from '../assets/stagew1.jpg';
 
 const Blog = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -16,9 +15,12 @@ const Blog = () => {
 
   const filteredPosts = selectedTag ? posts.filter(post => post.tags.includes(selectedTag)) : posts;
 
+  // Sort posts by date
+  filteredPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return (
     <div className="App">
-      <div className="text-center my-4"> {/* Centered title "Blog" */}
+      <div className="text-center my-4">
         <h2 className="text-4xl font-bold mb-4">Blog</h2>
       </div>
       <div className="flex justify-center px-4">
@@ -40,7 +42,7 @@ const Blog = () => {
           {filteredPosts.map((post, index) => (
             <Link key={index} to={`/post/${post.id}`}>
               <div className="max-w-sm h-full rounded overflow-hidden shadow-lg bg-gray-300 post-container">
-                <img className="w-full" src={img} alt={post.title} />
+                <img className="w-full" src={post.image} alt={post.title} height={100}/>
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{post.title}</div>
                   <p className="text-gray-700 text-base">{post.introduction}</p>

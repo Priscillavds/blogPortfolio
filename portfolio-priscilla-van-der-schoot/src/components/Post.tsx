@@ -1,6 +1,5 @@
 import posts from '../data/posts';
 import { useParams } from 'react-router-dom';
-import img from '../assets/stagew1.jpg';
 
 const Post = () => {
   const { id } = useParams();
@@ -21,7 +20,7 @@ const Post = () => {
             </span>
           ))}
         </div>
-        <img src={img} alt={post.title} className="mb-4 rounded-lg" />
+        <img src={post.image} alt={post.title} className="mb-4 rounded-lg" />
         <p className="text-gray-700 mb-4">{post.introduction}</p>
         <div className="text-gray-700 mb-4">{post.eersteParagraaf}</div>
         <div className="text-gray-700 mb-4">{post.tweedeParagraaf}</div>

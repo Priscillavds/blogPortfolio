@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import posts from '../data/posts';
-import img from '../assets/stagew1.jpg';
 
 const Home = () => {
   // Sort all posts by date in descending order
@@ -33,7 +32,7 @@ const Home = () => {
             {latestPosts.map((post, index) => (
               <Link key={index} to={`/post/${post.id}`}>
                 <div className="max-w-sm h-full rounded overflow-hidden shadow-lg bg-gray-300"> {/* Change background color to a slightly darker gray */}
-                  <img className="w-full" src={img} alt={post.title} />
+                  <img className="w-full" src={post.image} alt={post.title} />
                   <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">{post.title}</div>
                     <p className="text-gray-700 text-base">{post.introduction}</p>
